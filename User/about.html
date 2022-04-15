@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="about.css">
+
+</head>
+<body>
+    <div class="backAbout">
+        <div id="note"></div>
+        <div class="topAbout">
+            <span id="webName">About us</span>
+            <div class="userInfor">
+                <div id="text">Welcome to Game Station! Here you will experience a game search service built for gamers. We will provide you with a lot of game information and game guides. We will also provide you with games that you may be interested in!</div>
+                <div class="btn"><br>
+                    <button class="btnBac" id="Back" onclick="Back()">Back</button>        
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        function clearCookie(){
+            var cookies = document.cookie.split("; ");
+            for (var c = 0; c < cookies.length; c++) {
+                var d = window.location.hostname.split(".");
+                while (d.length > 0) {
+                    var cookieBase = encodeURIComponent(cookies[c].split(";")[0].split("=")[0]) + '=; expires=Thu, 01-Jan-1970 00:00:01 GMT; domain=' + d.join('.') + ' ;path=';
+                    var p = location.pathname.split('/');
+                    document.cookie = cookieBase + '/';
+                    while (p.length > 0) {
+                        document.cookie = cookieBase + p.join('/');
+                        p.pop();
+                    };
+                    d.shift();
+                }
+            }
+        }//clear cookie
+        function setCookie(name,content, exdays){
+            let exdate = new Date(); 
+            exdate.setTime(exdate.getTime() + 24 * 60 * 60 * 1000 * exdays);
+            window.document.cookie = name + "=" + content + ";path=/;expires=" + exdate.toGMTString();
+        }
+        function Back(){
+            let userCookie = document.cookie.split(";")[0].split("=")[1];
+            let pageCookie = document.cookie.split(";")[1].split("=")[1];
+            if(pageCookie==="search"){
+                clearCookie();
+                setCookie("user",userCookie,7);
+                window.location.href="search.html"
+            }
+            else if(pageCookie==="login"){
+                clearCookie()
+                window.location.href="login.html"
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="./login.js"></script>
+    <link rel="stylesheet" type="text/css" href="login.css"/>
+</head>
+<body>
+    <div class="backLogin">
+        <div id="note"></div>
+        <div class="topLogin">
+            <span id="webName">GameStation</span>
+            <div class="userInfor">
+                <input class="logInput" id="Name" placeholder="Your Name" type="text"/><br>
+                <input class="logInput" id="Password" placeholder="Your Password" type="password"/><br>
+                <div class="btn"><br>
+                    <button class="btnLog" id="Login" onclick="Login()">Login</button><br><br>
+                    <button class="btnReg" Aid="Register" onclick="Register()">Register</button>
+                    <span>|</span>
+                    <button class="btnFor" id="Forget" onclick="Forget()">Forget password?</button>        
+                </div>
+                <button class="btnAbo" id="About" onclick="About()">About us</button>        
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>
