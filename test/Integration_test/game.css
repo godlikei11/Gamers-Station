@@ -1,0 +1,259 @@
+html,body{
+    background-color: rgba(0, 0, 0, 0.664);
+    width: 100%;
+    height: 100%;
+}
+
+#cover{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-size: 100% 100%;
+    filter: blur(15px);
+    z-index: 0;
+}
+.mo{
+    transform: translate(-50%, 00%);
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    background: rgba(59, 59, 59, 0.432);
+    position:absolute;
+    opacity: 0.9;
+    z-index: 0;
+}
+.backGame{
+    background-size:100% 100%;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 2;
+}
+.topGame{
+    background-size: 100% 100%;
+    object-fit:fill;
+    border: 3px solid rgb(255, 255, 255);
+    border-radius: 20px;
+    margin-top: 1%;
+    margin-left: 10%;
+    width: 30%;
+    height: 30%;
+    position:fixed;
+}
+.gameInfor{
+    margin-left: 50%;
+    margin-top: 1%;
+    width: 40%;
+    height: 30%;
+    position:fixed;
+
+}
+.gameInfor-left{
+    border: 2px solid rgb(255, 255, 255);
+    border-radius: 20px;
+
+    margin-left: 0%;
+    margin-top: 0%;
+    width: 20%;
+    height: 20%;
+    position:fixed;
+}
+.gameInfor-right{
+    border: 2px solid rgb(255, 255, 255);
+    border-radius: 20px;
+    margin-left: 20%;
+    margin-top: 0%;
+    width: 20%;
+    height: 20%;
+    position:fixed;
+}
+.item{
+    border: 1px solid rgb(228, 181, 181, 0);
+    width: 10%;
+    height: auto;
+    position:fixed;
+    margin-top: 1%;
+    color: aliceblue;
+    font-size: 20px;
+}
+.info{
+    border: 1px solid rgb(228, 181, 181, 0);
+    width: 10%;
+    height: auto;
+    position:fixed;
+    margin-left: 10%;
+    margin-top: 1%;
+    color: aliceblue;
+    font-size: 20px;
+
+}
+
+.sec{
+    border: 1px solid rgba(255, 255, 255, 0);
+    margin-top: 6%;
+    height: auto;
+
+}
+.thr{
+    border: 1px solid rgb(63, 20, 20, 0);
+    margin-top: 6%;
+    height: auto;
+}
+.fou{
+    border: 1px solid rgb(63, 20, 20, 0);
+    margin-top: 6%;
+    height: auto;
+}
+.fiv{
+    border: 1px solid rgb(63, 20, 20, 0);
+    margin-top: 6%;
+    height: auto;
+}
+.six{
+    border: 1px solid rgb(63, 20, 20, 0);
+    margin-top: 6%;
+    height: auto;
+}
+.sev{
+    border: 1px solid rgb(63, 20, 20, 0);
+    margin-top: 6%;
+    height: auto;
+}
+.story{
+    position:fixed;
+    margin-top: 19%;
+    height: 40%;
+    margin-left: 5%;
+    width: 40%;
+    color: aliceblue;
+    font-size: 18px;
+    overflow-y:auto;
+
+}
+.comment{
+    position:fixed;
+    margin-top: 19%;
+    margin-left: 50%;
+    width: 40%;
+    height: 40%;
+    color: aliceblue;
+    
+}
+.title{
+    text-align: center;
+    color: aliceblue;
+    font-size: 40px;
+    font-weight: bolder;
+}
+#btnBack{
+    position: relative;
+    width: 70px;
+    font-size: 20px;
+    border: 2px solid white;
+    background-color: rgba(240, 248, 255, 0);
+    border-radius:20px;
+    color: white;
+    z-index: 999;
+}
+.commentInput{
+    font-size: 20px;
+    border-radius:20px;
+    position:absolute;
+    height: 40px;
+    width: 80%;
+    margin-left:5%;
+    margin-top:38%;
+    border: 1px solid black;
+}
+#btnComment{
+    position:absolute;
+    border: 1px solid white;
+    color: white;
+    font-size: 20px;
+    border-radius:20px;
+
+    background-color: rgba(240, 248, 255, 0);
+    
+    margin-left:87%;
+    margin-top:39%;
+
+}
+#note{
+    z-index: 99;
+    opacity: 0;
+    height: 6%;
+    background-color: rgba(74, 233, 108, 0.616);
+}
+.commentList{
+    z-index: 10;
+
+    overflow-y:auto;
+    position:absolute;
+    border: 3px solid rgb(255, 255, 255);
+    border-radius: 20px;
+    margin-left: 2%;
+    width: 96%;
+    height: 65%;
+    
+}
+.btnDel{
+
+    border-radius:20px;
+    background-color: rgba(240, 248, 255, 0);
+    color: white;
+    float: right;
+    position:relative;
+    width: auto;
+    margin-left: 90%;
+}
+.liComment{
+    position:relative;
+    font-size: 20px;
+    width: 30%;
+    float: left;
+}
+.liUser{
+    font-size: 15px;
+    float: right;
+    position:relative;
+    margin-left: 31%;
+    width: auto;
+}
+
+.content li{
+    position: relative;
+    border-bottom: 1px white solid;
+    height:65px;
+}
+.nonDel{
+    display: none;
+}
+.web{
+    float: left;
+    margin-top: 28%;
+    margin-left: 19%;
+    width: 80px;
+    height: 80px;
+    border-radius: 40px;
+    border: 1px solid white;
+}
+.wiki{
+    background-image: url("../wiki.png");
+    background-size:100% 100%;
+}
+.twi{
+    background-image: url("../tuite.png");
+    background-size:100% 100%;
+}
+.off{
+    background-image: url("../homeg.png");
+    background-size:100% 100%;
+}
+#Story{
+    border-radius: 20px;
+    margin-left: 5%;
+    height: auto;
+    width: 90%;
+    border: 3px solid white;
+
+}

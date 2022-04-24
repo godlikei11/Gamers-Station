@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="./search.js"></script>
+    <link rel="stylesheet" type="text/css" href="search.css">
+</head>
+<body onload="load()">
+    <div class="backSea">
+        <div class="cover"></div>
+        <div class="mo"></div>
+        <div id="head" onclick="userInfo()" onmouseover="displayset(0.1)" onmouseout="displayset(0)">
+            <img id="set" src="../set.jpg" title="Change user information">
+        </div>
+        <div id="Name"></div><div id="logout" ondblclick="log_out()"></div>
+
+        <img src="../about.png" id="About" title="About" ondblclick="About()">
+
+        <div id="GameStation">Game Station</div>
+        <div class="Search">
+            <input class="searchInput" name="CN_NAME" id="inputSearch" type="text"/>
+            <button class="btn" id="btnSearch" onclick="Search()">Search</button>
+        </div>
+        <div class="gameList">
+            <ul class="game">
+            </ul>
+        </div>
+    </div>
+    <div id="mocha"></div>
+    <script src="https://unpkg.com/chai/chai.js"></script>
+    <script src="https://unpkg.com/mocha/mocha.js"></script>
+
+    <script class="mocha-init">
+        mocha.setup('tdd');
+        mocha.checkLeaks();
+    </script>
+        <script src="./app.test.js"></script>
+        <script class="mocha-exec">
+            mocha.run();
+        </script>
+</body>
+</html>

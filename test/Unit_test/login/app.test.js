@@ -1,0 +1,21 @@
+suite("test",function(){
+    test("Login",function(){
+        clearCookie()
+        chai.assert.equal(Login(),true,"error");
+    })
+    test("Register",function(){
+        chai.assert.equal(Register(),true,"error");
+    })
+    test("Forget",function(){
+        chai.assert.equal(Forget(),true,"error");
+    })
+    test("setCookie",function(){
+        chai.assert.equal(setCookie(1,1,1),true,"error");
+    })
+    test("clearCookie",function(){
+        chai.assert.equal(clearCookie(),true,"error");
+    })
+    test("About",function(){
+        chai.assert.equal(About(),true,"error");
+    })
+})

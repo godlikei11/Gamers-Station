@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+
+    <link rel="stylesheet" type="text/css" href="game.css">
+</head>
+<body onload="Load()">
+    <div id="cover"></div>
+
+    <div class="backGame">
+        <div class="mo"></div>
+
+        <div id="note"></div>
+        <button id="btnBack" onclick="Back()">Back</button>
+
+        <div class="title"></div>
+        <div class="topGame"></div>
+        <div class="gameInfor">
+            <div class="gameInfor-left">
+                <div class="fri">
+                    <div class="item">Game Name:</div>
+                    <div class="info" id="Name" ondblclick="wikiCilck(this)"></div>
+                </div>
+                <div class="sec">
+                    <div class="item">Game Type:</div>
+                    <div class="info" id="Type"></div>
+                </div>
+                <div class="thr">
+                    <div class="item">Game Platform:</div>
+                    <div class="info" id="Platform" ondblclick="wikiCilck(this)"></div>
+                </div>
+                <div class="fou">
+                    <div class="item">Game Series:</div>
+                    <div class="info" id="Series" ondblclick="wikiCilck(this)"></div>
+                </div>
+                <div class="fiv">
+                    <div class="item">Game Region:</div>
+                    <div class="info" id="Region"></div>
+                </div>
+                <div class="six">
+                    <div class="item">Issue Date:</div>
+                    <div class="info" id="Date"></div>
+                </div>
+                <div class="sev">
+                    <div class="item">Publisher:</div>
+                    <div class="info" id="Publisher" ondblclick="wikiCilck(this)"></div>
+                </div>
+            </div>
+            <div class="gameInfor-right">
+                <div class="fri">
+                    <div class="item">Game Price:</div>
+                    <div class="info" id="Price"></div>
+                </div>
+                <div class="sec">
+                    <div class="item">Producer:</div>
+                    <div class="info" id="Producer" ondblclick="wikiCilck(this)"></div>
+                </div>
+                <div class="thr">
+                    <div class="item">Music:</div>
+                    <div class="info" id="Music" ondblclick="wikiCilck(this)"></div>
+                </div>
+                <div class="fou">
+                    <div class="item">Number of players:</div>
+                    <div class="info" id="Number"></div>
+                </div>
+                <div class="fiv">
+                    <div class="item">Game Engine:</div>
+                    <div class="info" id="Engine" ondblclick="wikiCilck(this)"></div>
+                </div>
+                <div class="six">
+                    <div class="item">Game Size:</div>
+                    <div class="info" id="Size"></div>
+                </div>
+                <div class="sev">
+                    <div class="item">Game Rating:</div>
+                    <div class="info" id="Rating" ondblclick="wikiCilck(this)"></div>
+                </div>
+            </div>
+        </div>
+        <div class="story">
+            <center><h1>Story</h1></center>
+            <div id="Story">
+
+            </div>
+        </div>
+        <div class="comment">
+            <center><h1>Comment</h1></center>
+            <div class="commentList">
+                <ul class="content">
+
+                </ul>
+            </div>
+            <input class="commentInput" id="commentInput" type="text"/><button id="btnComment" onclick="sendComment()">Comment</button>
+        </div>
+    </div>
+    <script src="./game.js"></script>
+    <script src="./game_test.js"></script>
+</body>
+</html>

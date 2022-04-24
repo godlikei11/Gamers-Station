@@ -1,0 +1,29 @@
+suite("test",function(){
+    test("Search",function(){
+        chai.assert.equal(Search(),true,"error");
+    })
+    test("displayset",function(){
+        chai.assert.equal(displayset(1),true,"error");
+    })
+    test("deleteChild",function(){
+        chai.assert.equal(deleteChild(),true,"error");
+    })
+    test("setCookie",function(){
+        chai.assert.equal(setCookie(1,1,1),true,"error");
+    })
+    test("clearCookie",function(){
+        chai.assert.equal(clearCookie(),true,"error");
+    })
+    test("enterGame",function(){
+        chai.assert.equal(enterGame(1),true,"error");
+    })
+    test("userInfo",function(){
+        chai.assert.equal(userInfo(),true,"error");
+    })
+    test("About",function(){
+        chai.assert.equal(About(),true,"error");
+    })
+    test("log_out",function(){
+        chai.assert.equal(log_out(),true,"error");
+    })
+})

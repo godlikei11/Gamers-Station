@@ -1,0 +1,33 @@
+suite("test",function(){
+    test("webOpen",function(){
+        clearCookie()
+        chai.assert.equal(webOpen(test),true,"error");
+    })
+    test("Load",function(){
+        chai.assert.equal(Load(),true,"error");
+    })
+    test("deleteChild",function(){
+        chai.assert.equal(deleteChild(),true,"error");
+    })
+    test("setCookie",function(){
+        chai.assert.equal(setCookie(1,1,1),true,"error");
+    })
+    test("clearCookie",function(){
+        chai.assert.equal(clearCookie(),true,"error");
+    })
+    test("Back",function(){
+        chai.assert.equal(Back(),true,"error");
+    })
+    test("delComment",function(){
+        chai.assert.equal(delComment(test),true,"error");
+    })
+    test("wikiclick",function(){
+        chai.assert.equal(wikiclick(test),true,"error");
+    })
+    test("sendComment",function(){
+        chai.assert.equal(sendComment(),true,"error");
+    })
+    test("userInfo",function(){
+        chai.assert.equal(userInfo(test),true,"error");
+    })
+})

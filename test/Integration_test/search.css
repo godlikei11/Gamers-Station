@@ -1,0 +1,185 @@
+body,html{
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.664);
+
+}
+#head{
+    background-image: url("../user.jpg");
+
+    border: 2px solid rgb(58, 58, 58);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-top: 20px;
+    margin-left: 40px;
+    position: relative;
+    display: inline-block;
+}
+#set{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    opacity: 0;
+}
+#GameStation{
+    z-index:11;
+    position: absolute;
+    font-size: 80PX;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-110%);
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color:aliceblue;
+}
+.backSea{
+    position: absolute;
+    z-index: 1;
+
+    width: 100%;
+    height: 100%;
+    position: static;
+}
+.cover{
+    background-image: url("../gameSearch.jpg");
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-size: 100% 100%;
+    z-index: 0;
+}
+.mo{
+    transform: translate(-50%, 00%);
+    left: 50%;
+    width: 50%;
+    height: 100%;
+    background: rgb(59, 59, 59);
+    position:absolute;
+    filter:blur(40px);
+    opacity: 0.9;
+    z-index: 2;
+}
+.head_con{
+    margin-top: 60px;
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    z-index: 10;
+
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    padding: 12px 16px;
+}
+.head:hover .head_con{display:block;}
+#inputSearch{
+    width: 25%;
+    border-radius:20px;
+    font-size: 30px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 10;
+
+    transform: translate(-50%, 50%);
+}
+#btnSearch{
+    width: auto;
+    border-radius:20px;
+    font-size: 30px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 10;
+    transform: translate(300%, 50%);
+}
+.gameList{
+    z-index: 10;
+    position: absolute;
+    font-size: 30px;
+    top: 50%;
+    left: 50%;
+    overflow-y:auto;
+}
+.gameImg{
+    margin-top: 2%;
+    margin-left: 2%;
+    width: 200px;
+    float: left;
+
+}
+
+.gameTitle{
+    width:700px;
+    float:left;
+
+}
+.game{
+    margin-top: 10px;
+    margin-left: 10px;
+    height: auto;
+
+}
+.img{
+    width: 200px;
+    height: 150px;
+    border-radius:20px;
+    float: left;
+    background-size: 100% 100%;
+    position: relative;
+}
+.title{
+    margin-left: 20px;
+    width: auto;
+    height: 20px;
+    float: left;
+    position: relative;
+    color: rgb(221, 221, 221);
+}
+.intro{
+    width: auto;
+    margin-left: 30px;
+    margin-top: 10px;
+    font-size: 20px;
+    word-wrap:break-word ;
+    color: #acacac;
+    position: relative;
+   
+}
+.developer{
+    margin-left: 90%;
+    font-size: 20px;
+    color: #ebebeb;
+    word-wrap:break-word ;
+    position: relative;
+}
+.u{
+    color: #f9f9f9;
+}
+#About{
+    margin-left: 55%;
+    margin-top: 22%;
+    width: 30px;
+    height: 30px;
+    z-index:999;
+    position: absolute;
+}
+#logout{
+    background-image: url("../log_out.png");
+    margin-top: -20px;
+    margin-left: 100px;
+    width: 20px;
+    height: 20px;
+    float: left;
+    position: absolute;
+    background-size: 100% 100%;
+    opacity: 1;
+    z-index: 99;
+}
+#Name{
+    text-align: center;
+    margin-left:40px;
+    margin-top: 10px;
+    width: 50px;
+    height: auto;
+    float: left;
+    position: absolute;
+}

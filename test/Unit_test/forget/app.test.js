@@ -1,0 +1,11 @@
+suite("test",function(){
+    test("Reset",function(){
+        chai.assert.equal(Reset(),true,"error");
+    })
+    test("Search",function(){
+        chai.assert.equal(Search(),true,"error");
+    })
+    test("Back",function(){
+        chai.assert.equal(Back(),true,"error");
+    })
+})

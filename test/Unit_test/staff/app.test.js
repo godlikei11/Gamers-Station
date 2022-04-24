@@ -1,0 +1,17 @@
+suite("test",function(){
+    test("Load",function(){
+        chai.assert.equal(Load(),true,"error");
+    })
+    test("upload",function(){
+        chai.assert.equal(upload(),true,"error");
+    })
+    test("delGame",function(){
+        chai.assert.equal(delGame(),true,"error");
+    })
+    test("changeInfo",function(){
+        chai.assert.equal(changeInfo(),true,"error");
+    })
+    test("clearCookie",function(){
+        chai.assert.equal(clearCookie(),true,"error");
+    })
+})

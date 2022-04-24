@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="./staff.js"></script>
+    <link rel="stylesheet" type="text/css" href="staff.css">
+
+</head>
+<body onload="Load()">
+    <div>Games Name:</div>
+    <input class="Input" id="Name" type="text">
+    <div>Games Developer:</div>
+    <input class="Input" id="Developer" type="text">
+    <div>Games Introduction:</div>
+    <input class="Input" id="Introduction" type="text">
+    <div>Games Type:</div>
+    <input class="Input" id="Type" type="text">
+    <div>Games Platform:</div>
+    <input class="Input" id="Platform" type="text">
+    <div>Games Series:</div>
+    <input class="Input" id="Series" type="text">
+    <div>Games Region:</div>
+    <input class="Input" id="Region" type="text">
+    <div>Games Date:</div>
+    <input class="Input" id="Date" type="text">
+    <div>Games Publisher:</div>
+    <input class="Input" id="Publisher" type="text">
+    <div>Games Price:</div>
+    <input class="Input" id="Price" type="text">
+    <div>Games Music:</div>
+    <input class="Input" id="Music" type="text">
+    <div>Games Number:</div>
+    <input class="Input" id="Number" type="text">
+    <div>Games Engine:</div>
+    <input class="Input" id="Engine" type="text">
+    <div>Games Size:</div>
+    <input class="Input" id="Size" type="text">
+    <div>Games Rating:</div>
+    <input class="Input" id="Rating" type="text">
+    <div>Games Story:</div>
+    <input class="Input" id="Story" type="text">
+    <div>Games Offical page:</div>
+    <input class="Input" id="Offical" type="text">
+    <div>Games Twitter:</div>
+    <input class="Input" id="Twitter" type="text">
+    <div>Games Wiki:</div>
+    <input class="Input" id="Wiki" type="text">
+    <button onclick="delGame()">delGame</button>
+    <button onclick="upload()">Upload</button>
+    <button onclick="changeInfo()">changeInfo</button>
+    <div id="mocha"></div>
+    <script src="https://unpkg.com/chai/chai.js"></script>
+    <script src="https://unpkg.com/mocha/mocha.js"></script>
+
+    <script class="mocha-init">
+        mocha.setup('tdd');
+        mocha.checkLeaks();
+    </script>
+        <script src="./app.test.js"></script>
+        <script class="mocha-exec">
+            mocha.run();
+        </script>
+</body>
+</html>

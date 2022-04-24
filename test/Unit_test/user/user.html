@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="./user.js"></script>
+    <link rel="stylesheet" type="text/css" href="user.css">
+
+</head>
+<body onload="load()">
+    <div class="backUser">
+        <div id="note"></div>
+        <img src="../pvz3.png" class="p3">
+        <center><div id="title">User Information</div></center>
+        <div class="user"> 
+            <div class="left">
+                <div class="Label">Name:</div>
+                <div class="Label">Email:</div>
+                <div class="Label">Age:</div>
+                <div class="Label">Sex:</div>
+                <div class="Label">Residence:</div>
+                <div class="Label">Quote:</div>
+            </div>
+
+        <div class="right">
+            <div id="divName" class="Info"></div>
+            <div id="divEmail" class="Info"></div>
+            <div id="divAge" class="Info"></div>
+            <div id="divSex" class="Info"></div>
+            <div id="divLive" class="Info"></div>
+            <div id="divSign" class="Info"></div>
+        </div>
+
+            <div>
+                <div id="btnCha"><br>
+                    <button id="Edit" class="btnE" onclick="Edit()">Edit</button>
+                </div>
+                <button id="Back" class="btnE" onclick="Back()">Back</button>
+            </div>
+        </div>
+    </div>
+    <div id="mocha"></div>
+    <script src="https://unpkg.com/chai/chai.js"></script>
+    <script src="https://unpkg.com/mocha/mocha.js"></script>
+
+    <script class="mocha-init">
+        mocha.setup('tdd');
+        mocha.checkLeaks();
+    </script>
+        <script src="./app.test.js"></script>
+        <script class="mocha-exec">
+            mocha.run();
+        </script>
+</body>
+</html>

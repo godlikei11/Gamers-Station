@@ -1,0 +1,11 @@
+suite("test",function(){
+    test("check",function(){
+        chai.assert.equal(check(),true,"error");
+    })
+    test("setCookie",function(){
+        chai.assert.equal(setCookie("test","test",1),true,"error");
+    })
+    test("clearCookie",function(){
+        chai.assert.equal(clearCookie(),true,"error");
+    })
+})
