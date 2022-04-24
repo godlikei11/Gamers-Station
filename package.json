@@ -5,7 +5,6 @@
     "description": "",
     "main": "Node.js",
     "scripts": {
-      "test": "mocha -ui tdd test/",
       "start": "node Node.js"
     },
   "devDependencies": {
