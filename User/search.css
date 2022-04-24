@@ -161,5 +161,25 @@ body,html{
     height: 30px;
     z-index:999;
     position: absolute;
-
+}
+#logout{
+    background-image: url("../log_out.png");
+    margin-top: -20px;
+    margin-left: 100px;
+    width: 20px;
+    height: 20px;
+    float: left;
+    position: absolute;
+    background-size: 100% 100%;
+    opacity: 1;
+    z-index: 99;
+}
+#Name{
+    text-align: center;
+    margin-left:40px;
+    margin-top: 10px;
+    width: 50px;
+    height: auto;
+    float: left;
+    position: absolute;
 }

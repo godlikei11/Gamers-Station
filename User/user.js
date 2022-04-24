@@ -1,11 +1,14 @@
-let user = document.cookie.split("=")[1];
-console.log(user)
+let userCookie = document.cookie.split(";")[0].split("=")[1];
+let pageCookie = document.cookie.split(";")[1].split("=")[1];
+console.log(userCookie)
 function load(){
-    //console.log("load");
+    if(pageCookie==="game"){
+        $("#Edit").css("display","none");
+    }
     $.ajax({
         url: "../Node.js",
         type: "get",
-        data: {Page:"log_suc",Name:user},
+        data: {Page:"log_suc",Name:userCookie},
         success: function (Data,Status){
             let Name = Data.split(";")[0];
             let Email = Data.split(";")[1];
@@ -16,7 +19,7 @@ function load(){
             $("#divName").html("<font>"+decodeURIComponent(Name)+"</font>");
             $("#divEmail").html("<font>"+decodeURIComponent(Email)+"</font>");
             if(Age!=="undefined"){
-                $("#divAge").html("<font>"+Age+"</font>");
+                $("#divAge").html("<font>"+decodeURIComponent(Age)+"</font>");
             }
             else{
                 $("#divAge").html("<font>unknow</font>");
@@ -65,15 +68,48 @@ function finEdit(){
     $.ajax({
         url: "../Node.js",
         type: "get",
-        data: {Page:"edit",Name:user,Age:$("#newAge").val(),Live:$("#newLive").val(),Sign:$("#newSign").val(),Sex:$("#newSex").html()},
+        data: {Page:"edit",Name:userCookie,Age:$("#newAge").val(),Live:$("#newLive").val(),Sign:$("#newSign").val(),Sex:$("#newSex").html()},
         success: function (Data,Status){
             load();
             $("#btnCha").html("<button id='Edit' class='btnE' onclick='Edit()'>Edit</button>")
         }//upload the information and input btn for back
     })
-
-
 }
+function setCookie(name,content,exdays){
+    let exdate = new Date(); 
+    exdate.setTime(exdate.getTime() + 24 * 60 * 60 * 1000 * exdays);
+    window.document.cookie = name + "=" + content + ";path=/;expires=" + exdate.toGMTString();
+}
+function clearCookie(){
+    var cookies = document.cookie.split("; ");
+    for (var c = 0; c < cookies.length; c++) {
+        var d = window.location.hostname.split(".");
+        while (d.length > 0) {
+            var cookieBase = encodeURIComponent(cookies[c].split(";")[0].split("=")[0]) + '=; expires=Thu, 01-Jan-1970 00:00:01 GMT; domain=' + d.join('.') + ' ;path=';
+            var p = location.pathname.split('/');
+            document.cookie = cookieBase + '/';
+            while (p.length > 0) {
+                document.cookie = cookieBase + p.join('/');
+                p.pop();
+            };
+            d.shift();
+        }
+    }
+}
+
 function Back(){
-    window.location.href="search.html"
+    if(pageCookie==="search"){
+        clearCookie();
+        setCookie("user",userCookie,7)
+        window.location.href="search.html"
+    }
+    else if(pageCookie==="game"){
+        let meCookie = document.cookie.split(";")[3].split("=")[1];
+        let gameCookie = document.cookie.split(";")[2].split("=")[1];
+        clearCookie();
+        setCookie("user",meCookie,7)
+        setCookie("game",gameCookie,7)
+        window.location.href="game.html"
+
+    }
 }

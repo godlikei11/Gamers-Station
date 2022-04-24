@@ -21,7 +21,7 @@ function Search(){
         data: {Page:"forget",Name:Name.val(),Email:Email.val()},
             success: function (Data,Status){
                 if(Data=="not exist"){
-                    Note.innerHTML="<center><font color='white' size=20px>This name is not exist</font></center>";
+                    Note.innerHTML="<center><font color='white' size=20px>The name is not exist</font></center>";
                 }//If name is not exist
                 else if(Data=="success"){
                     webName.innerHTML="Hi,"+Name.val();
@@ -32,8 +32,6 @@ function Search(){
                     Note.style.opacity=3;
                     Note.innerHTML="<center><font color='white' size=20px>Email does not match the name</font></center>";
                 }//If email does not match the name
-                console.log(Data);
-                console.log(Status);
         }
     }); 
 

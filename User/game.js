@@ -4,7 +4,7 @@ let gameCookie = document.cookie.split(";")[1].split("=")[1];
 console.log(userCookie,gameCookie)
 function Back(){
     clearCookie();
-    setCookie(7);
+    setCookie("user",userCookie,7);
     window.location.href="search.html"
 
 }
@@ -48,11 +48,11 @@ function Load(){
                 for(var i=0;i<=comGame.length-1;i++){
                     if(comGame[i].Name!==userCookie){
                         var $li = $("<li><div class='liComment'>"+comGame[i].userComment+"</div>"+
-                    "<br><div class='liUser'>"+comGame[i].Name+"</div><button class='nonDel'>Delete</button></li>")
+                    "<br><div class='liUser' ondblclick='userInfo(this)'>"+comGame[i].Name+"</div><button class='nonDel'>Delete</button></li>")
                     }
                     else{
                         var $li = $("<li><div class='liComment'>"+comGame[i].userComment+"</div>"+
-                    "<br><div class='liUser'>"+comGame[i].Name+"</div><button class='btnDel' onclick='delComment(this)' id='"+comGame[i]._id+"'>Delete</button></li>")
+                    "<br><div class='liUser' ondblclick='userInfo(this)'>"+comGame[i].Name+"</div><button class='btnDel' onclick='delComment(this)' id='"+comGame[i]._id+"'>Delete</button></li>")
                     }
                     $(".content").append($li)
                 }
@@ -63,25 +63,6 @@ function Load(){
             
     })
 
-    /*var ws = new WebSocket('ws://localhost:3000/'); 
-    ws.onopen = function() {
-        ws.send('start');
-    }
-        ws.onmessage = function(e) {
-            deleteChild()
-            let com = JSON.parse(e.data)
-            let len = $(".content li").length
-            console.log(com.length)
-                for(var i=0;i<=com.length-1;i++){
-                    var $li = $("<li><div class='liComment'>"+com[i].userComment+"</div>"+
-                    "<br><div class='liUser'>"+com[i].Name+"</div><button class='btnDel'>Delete</button></li>")
-                    $(".content").append($li)
-            }
-            ws.send(JSON.stringify(gameCookie));
-        }
-        ws.onclose = function () {
-            console.log("WebSocket连接关闭");
-        }*/
 
 }
 function webOpen(e){
@@ -99,7 +80,7 @@ function delComment(e){
             }
     })
 }
-function wikiCilck(e){
+function wikiclick(e){
     window.open("https://en.wikipedia.org/wiki/"+e.innerText)
 }
 function sendComment(){
@@ -137,10 +118,10 @@ function sendComment(){
 
 
 
-function setCookie(exdays){
+function setCookie(name,content,exdays){
     let exdate = new Date(); 
     exdate.setTime(exdate.getTime() + 24 * 60 * 60 * 1000 * exdays);
-    window.document.cookie = "user" + "=" + userCookie + ";path=/;expires=" + exdate.toGMTString();
+    window.document.cookie = name + "=" + content + ";path=/;expires=" + exdate.toGMTString();
 }
 function clearCookie(){
     var cookies = document.cookie.split("; ");
@@ -157,4 +138,13 @@ function clearCookie(){
             d.shift();
         }
     }
+}
+
+function userInfo(e){
+    clearCookie();
+    setCookie("user",e.innerText,7);
+    setCookie("page","game",7);
+    setCookie("game",gameCookie,7);
+    setCookie("me",userCookie,7)
+    window.location.href="user.html"
 }

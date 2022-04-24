@@ -4,15 +4,16 @@ let bcrypt = require('bcryptjs');
 let Httpserver = http.createServer();
 let MongoClient = require('mongodb').MongoClient;
 var ObjectId = require('mongodb').ObjectID;
-let WebSocket = require("ws");
+
 const { ObjectID } = require('bson');
+/*
+let WebSocket = require("ws");
 let wss = new WebSocket.Server({ port: 3000, clientTracking: true });
 wss.on('connection', function connection(ws) {
     ws.on('message', function incoming(message) {
       wss.clients.forEach(function(client){
          //Sendback the data
          let MongoUrl = "mongodb://localhost:27017/";//start Mongodb
-         console.log(message)
          let dataGame = message.toString().split('"')[1];
             MongoClient.connect(MongoUrl, function(err, db) {
             if (err) throw err;
@@ -26,22 +27,9 @@ wss.on('connection', function connection(ws) {
       })
     })
 })
-
-/*var ws = require('nodejs-websocket');
-var WebSocketserver = ws.createServer(function(socket){
-
-   var count = 1;
-   socket.on('text', function(str) {
-
-        console.log(str);
-
-        socket.sendText('服务器端收到客户端端发来的消息了！' + count++);
-    });
-}).listen(3000);*/
-
+*/
 Httpserver.on("request",function(req,res){
     let url = req.url;
-    console.log(url)
     function sendMessage(message){
       res.writeHead(200, {'Content-type' : 'text/html'});
       res.write(message)
@@ -50,7 +38,6 @@ Httpserver.on("request",function(req,res){
    function hashPass(pass){
       let salt = bcrypt.genSaltSync(10);
       let hashedPassword = bcrypt.hashSync(pass, salt);
-      console.log(hashedPassword)
       return hashedPassword;
    }//function to hash the password
 
@@ -62,7 +49,6 @@ Httpserver.on("request",function(req,res){
          if (err) throw err;
          let dboUser = db.db("MongoDatabaseUser");
          if(Page==="register"){
-            console.log("register interface")
             let myobj = { Name: Data[1].split("=")[1], Password: hashPass(Data[2].split("=")[1]),Email : Data[3].split("=")[1]};
             let SearchName = {"Name":Data[1].split("=")[1]}
             dboUser.collection("site").find(SearchName).toArray(function(err, result) {
@@ -71,14 +57,12 @@ Httpserver.on("request",function(req,res){
                   dboUser.collection("site").insertOne(myobj, function(err, res) {
                      if (err) throw err;
                      sendMessage("success");
-                     console.log("reg success");
-                     //db.close();
+                     db.close();
                   });
                }//If no same name in database,insert the data
                else{
                   sendMessage("exist");
-                  console.log("exist");
-                  //db.close();
+                  db.close();
                }//If same name in database,send "exist"
             })
          }//register function
@@ -88,19 +72,13 @@ Httpserver.on("request",function(req,res){
                if (err) throw err;
                else if(result==""){
                   sendMessage("not exist");
-                  console.log("not exist");
-                  //db.close();
                }//If no name in database,send "not exist"
                else{
                   if(bcrypt.compareSync(Data[2].split("=")[1],result[0].Password)){
                      sendMessage("success");
-                     console.log("log success");
-                     //db.close();
                     }//If name is match the password in database,send "success"
                   else{
                      sendMessage("fail");
-                     console.log("log fail");
-                     //db.close();
                   }//If password is not right,send "fail"
                }
             });
@@ -111,19 +89,16 @@ Httpserver.on("request",function(req,res){
                if (err) throw err;
                else if(result==""){
                   sendMessage("not exist");
-                  console.log("not exist");
-                  //db.close();
+                  db.close();
                }//If name is not exist,send"not exist"
                else{
                   if(Data[2].split("=")[1]==result[0].Email){
                      sendMessage("success");
-                     console.log("log success");
-                     //db.close();
+                     db.close();
                     }//If name is match the email,send"success"
                   else{
                      sendMessage("fail");
-                     console.log("log fail");
-                     //db.close();
+                     db.close();
                   }//If name is not match the email,send"fail"
                }
             });
@@ -134,18 +109,17 @@ Httpserver.on("request",function(req,res){
             dboUser.collection("site").updateOne(SearchName, newPass, function(err, res) {
                if (err) throw err;
                sendMessage("reset_success");
-               console.log("reset success");
-               //db.close();
+               db.close();
            });//reset data
          }//reset password function
          if(Page==="log_suc"){
             let SearchName = {"Name":Data[1].split("=")[1]}
-            console.log("log_suc");
             dboUser.collection("site").find(SearchName).toArray(function(err, result) {
                if (err) throw err;
                res.writeHead(200, {'Content-type' : 'text/html'});
                res.write(result[0].Name+";"+result[0].Email+";"+result[0].Age+";"+result[0].Sex+";"+result[0].Live+";"+result[0].Sign)
                res.end();
+               db.close();
             })//find the information
          }//show user information function
          if(Page==="edit"){
@@ -153,25 +127,21 @@ Httpserver.on("request",function(req,res){
             if(Data[2].split("=")[1]!==""){
                dboUser.collection("site").updateOne(SearchName,{$set:{"Age":Data[2].split("=")[1]}}, function(err, res) {
                   if (err) throw err;
-                  //db.close();
                })
             }//update Age
             if(Data[3].split("=")[1]!==""){
                dboUser.collection("site").updateOne(SearchName,{$set:{"Live":Data[3].split("=")[1]}}, function(err, res) {
                   if (err) throw err;
-                  //db.close();
                })
             }//update Live
             if(Data[4].split("=")[1]!==""){
                dboUser.collection("site").updateOne(SearchName,{$set:{"Sign":Data[4].split("=")[1]}}, function(err, res) {
                   if (err) throw err;
-                  //db.close();
                })
             }//update Sign
             if(Data[5]){
                dboUser.collection("site").updateOne(SearchName,{$set:{"Sex":Data[5].split("=")[1]}}, function(err, res) {
                   if (err) throw err;
-                  //db.close();
                })
             } //update Sex
             res.writeHead(200, {'Content-type' : 'text/html'});
@@ -188,11 +158,9 @@ Httpserver.on("request",function(req,res){
                      list.push(result[i].Name+";"+result[i].Developer+";"+result[i].Intro)
                   }
                   sendMessage(JSON.stringify(list))
-                  //db.close();
                }//Find the game and send back
                else{
                   sendMessage("no_game");
-                  //db.close();
                }//Find no game 
             })
          }//search games function
@@ -205,14 +173,12 @@ Httpserver.on("request",function(req,res){
                   dboGame.collection("site").insertOne(gameObj, function(err, res) {
                      if (err) throw err;
                      sendMessage("success");
-                     console.log("upload success");
-                     //db.close();
+                     db.close();
                   });
                }//upload game success
                else{
                   sendMessage("exist");
-                  console.log("exist");
-                  //db.close();
+                  db.close();
                }//game is already
             })
          }//upload games' information function
@@ -220,29 +186,23 @@ Httpserver.on("request",function(req,res){
       let dboComment = db.db("MongoDatabaseComment");
       if(Page==="game"){
          let gameObj={Name: Data[1].split("=")[1]};
-         console.log("obj="+Data)
          dboGame.collection("site").find(gameObj).toArray(function(err, result1) {
             if (err) throw err;
-            console.log(result1)
             dboComment.collection("site").find({"Game":Data[1].split("=")[1]}).toArray(function(err, result2) {
                if (err) throw err;
                result1.push(result2);
                res.writeHead(200, {'Content-type' : 'text/html'});
                res.write(JSON.stringify(result1));
                res.end();
-               //db.close();
+               db.close();
             })
-
          })
-
       }
       if(Page==="delGame"){
-         var whereStr = {"Name":Data[1].split("=")[1]};  // 查询条件
+         var whereStr = {"Name":Data[1].split("=")[1]};  
          dboGame.collection("site").deleteOne(whereStr, function(err, obj) {
             if (err) throw err;
             sendMessage("success");
-
-            console.log("文档删除成功");
             db.close();
          });
       }
@@ -252,8 +212,7 @@ Httpserver.on("request",function(req,res){
          dboGame.collection("site").updateOne(SearchName, newPass, function(err, res) {
             if (err) throw err;
             sendMessage("reset_success");
-            console.log("reset success");
-            //db.close();
+            db.close();
         });//reset data
 
       }
@@ -262,22 +221,33 @@ Httpserver.on("request",function(req,res){
             dboComment.collection("site").insertOne(myobj, function(err, res) {
                if (err) throw err;
                sendMessage("success");
-               console.log("comment success");
-               //db.close();
+               db.close();
             });
-         }
+         }//add comment
          if(Page==="delComment"){
-            console.log(Data[1].split("=")[1])
-            var whereStr = {"_id":ObjectID(Data[1].split("=")[1])};  // 查询条件
+            var whereStr = {"_id":ObjectID(Data[1].split("=")[1])};
             dboComment.collection("site").deleteOne(whereStr, function(err, obj) {
                if (err) throw err;
                sendMessage("success");
-
-               console.log("文档删除成功");
                db.close();
             });
-         }
-      console.log(Data)
+         }//delete comment
+         let dboStaff = db.db("MongoDatabaseStaff");
+         if(Page==="Pass"){
+            let SearchName = {"Name":Data[1].split("=")[1]}
+            dboStaff.collection("site").find(SearchName).toArray(function(err, result) {
+               if (err) throw err;
+               console.log(result)
+               if(bcrypt.compareSync(Data[2].split("=")[1],result[0].Password)){
+                  sendMessage("pass");
+                  db.close();
+               }
+               else{
+                  sendMessage("fail");
+                  db.close();
+               }
+            })
+         }//staff login
       })
 
    }
@@ -297,24 +267,3 @@ Httpserver.on("request",function(req,res){
 Httpserver.listen(8080,function(){
     console.log("server running");
 })
-
-//({'content':/^.*120.77.215.34:9999.*$/})
-
-/*
-                  let gameObj={Name:"Resident%20Evil%20Village",Developer: 'Capcom',Intro:"'Resident Evil: Village' is an action-adventure game produced and published by Capcom. It will be released on May 7, 2021. It is the eighth work of the 'Resident Evil' mainline series and the sequel to 'Resident Evil 7'."}
-            dboGame.collection("site").insertOne(gameObj, function(err, res) {
-               if (err) throw err;
-               sendMessage("success");
-               console.log("reg success");
-            });
-   function comparePass(enterPass,dbPass){
-      let salt = bcrypt.genSaltSync(10);
-      let ePass = bcrypt.hashSync(enterPass, salt);
-      if(ePass===dbPass){
-         return true
-      }
-      else{
-         return false
-      }
-   }
-      */

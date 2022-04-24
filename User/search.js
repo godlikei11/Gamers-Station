@@ -6,12 +6,8 @@ let Name = document.getElementById("Name");
 function load(){
     console.log(userCookie)
         $("#Name").html("<span class='u'>"+userCookie+"</span>");
-
-
 }//show the name
-function userInfo(){
-    window.location.href="user.html"
-}
+
 function displayset(num){
     var set = document.getElementById("set");
     set.style.opacity=num;
@@ -39,8 +35,6 @@ function Search(){
         type: "get",
         data: {Page:"search",Name:document.getElementById("inputSearch").value},
         success: function (Data,Status){
-            console.log(Data)
-            
             if(Data==="no_game"){
                 $(".game").html("<div>no game<div/>")
             }//If no game
@@ -55,12 +49,6 @@ function Search(){
                     $(".game").append($li)
                 }      
             }//add gamelist
-            /*show the information of game
-            $(".game").html("<img src='../Img/"+ unescape(Data.split(";")[0])+".jpg' class='img'>"+
-                "<div class='title' ondblclick='enterGame()'>"+unescape(Data.split(";")[0])+"</div><br>"+
-                "<div class='intro'>"+unescape(Data.split(";")[2])+"</div>"+
-                "<div class='developer'>"+unescape(Data.split(";")[1])+"</div>")
-            */
         }
     })
 }
@@ -92,10 +80,20 @@ function enterGame(e){
     console.log(e.innerText)
     window.location.href="game.html"
 }
+function userInfo(){
+    clearCookie();
+    setCookie("user",userCookie,7)
+    setCookie("page","search",7)
 
+    window.location.href="user.html"
+}
 function About(){
     clearCookie();
     setCookie("user",userCookie,7)
     setCookie("from","search",1)
     window.location.href="about.html"
+}
+function log_out(){
+    clearCookie();
+    window.location.href="login.html"
 }
