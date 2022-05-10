@@ -197,7 +197,7 @@ Httpserver.on("request",function(req,res){
                db.close();
             })
          })
-      }
+      }//search game name and send back game infomation and comment
       if(Page==="delGame"){
          var whereStr = {"Name":Data[1].split("=")[1]};  
          dboGame.collection("site").deleteOne(whereStr, function(err, obj) {
@@ -205,7 +205,7 @@ Httpserver.on("request",function(req,res){
             sendMessage("success");
             db.close();
          });
-      }
+      }//delete game
       if(Page==="changeGame"){
          let SearchName = {"Name":Data[1].split("=")[1]}
          let newPass = {$set:{"Wiki":Data[2].split("=")[1]}}
@@ -213,7 +213,7 @@ Httpserver.on("request",function(req,res){
             if (err) throw err;
             sendMessage("reset_success");
             db.close();
-        });//reset data
+        });//reset game's wiki
 
       }
          if(Page==="sendComment"){

@@ -4,6 +4,8 @@ function Register(){
     let rePass = $("#rePassword");
     let Email = $("#Email");
     let Note = document.getElementById("note");
+    let check = document.getElementById("Agree");
+
     if(Name.val() ===""){
         Note.style.opacity=3;
         Note.innerHTML="<center><font color='white' size=20px>Name can not be empty</font></center>";
@@ -34,6 +36,11 @@ function Register(){
         Note.innerHTML="<center><font color='white' size=20px>Email format is incorrect</font></center>";
         return;
     }//If email format is incorrect
+    if(check.checked===false){
+        Note.style.opacity=3;
+        Note.innerHTML="<center><font color='white' size=20px>Please agree to store your data</font></center>";
+        return
+    }//check the agree
     $.ajax({
         url: "node.js",
         type: "get",

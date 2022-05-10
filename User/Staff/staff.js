@@ -29,7 +29,7 @@ function upload(){
     let gOffical = $("#Offical");
     let gTwitter = $("#Twitter");
     let gWiki = $("#Wiki");
-    console.log()
+    console.log(gName.val())
     $.ajax({
         url: "../Node.js",
         type: "get",
@@ -51,8 +51,6 @@ function delGame(){
     })
 }
 function changeInfo(){
-    let cName = $("#Name");
-    let cWiki = $("#Wiki");
     $.ajax({
         url: "../Node.js",
         type: "get",
@@ -61,7 +59,7 @@ function changeInfo(){
             console.log(Data)
         }
     })
-
+    console.log(changeInfo)
 }
 function clearCookie(){
     var cookies = document.cookie.split("; ");

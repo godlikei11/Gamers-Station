@@ -26,7 +26,6 @@ function clearCookie(){
         }
     }
 }//clear cookie
-
 function setCookie(name,content, exdays){
     let exdate = new Date(); 
     exdate.setTime(exdate.getTime() + 24 * 60 * 60 * 1000 * exdays);
@@ -37,11 +36,17 @@ function Login(){
     let Name = $("#Name");
     let Pass = $("#Password");
     let Note = document.getElementById("note");
+    let check = document.getElementById("Agree");
     if(Name.val()===""){
         Note.style.opacity=3;
         Note.innerHTML="<center><font color='white' size=20px>The name can't be empty</font></center>";
         return
     }//If name is empty
+    if(check.checked===false){
+        Note.style.opacity=3;
+        Note.innerHTML="<center><font color='white' size=20px>Please agree to store your data</font></center>";
+        return
+    }//check agree
     $.ajax({
         url: "../Node.js",
         type: "get",

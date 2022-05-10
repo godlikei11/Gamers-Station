@@ -16,6 +16,7 @@ function deleteChild() {
     first = e.firstElementChild;
     }
 }
+
 function Load(){
     $.ajax({
         url: "../Node.js",

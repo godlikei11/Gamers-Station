@@ -4,6 +4,7 @@ console.log(userCookie)
 function load(){
     if(pageCookie==="game"){
         $("#Edit").css("display","none");
+        $(".Email").css("display","none")
     }
     $.ajax({
         url: "../Node.js",
