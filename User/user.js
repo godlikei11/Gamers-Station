@@ -103,7 +103,7 @@ function Back(){
         clearCookie();
         setCookie("user",userCookie,7)
         window.location.href="search.html"
-    }
+    }//if last page is search
     else if(pageCookie==="game"){
         let meCookie = document.cookie.split(";")[3].split("=")[1];
         let gameCookie = document.cookie.split(";")[2].split("=")[1];
@@ -111,6 +111,5 @@ function Back(){
         setCookie("user",meCookie,7)
         setCookie("game",gameCookie,7)
         window.location.href="game.html"
-
-    }
+    }//if last page is game
 }

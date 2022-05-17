@@ -19,7 +19,7 @@ function deleteChild() {
     first.remove();
     first = e.firstElementChild;
     }
-}
+}//delete list
 function Search(){
     deleteChild()
     $("#About").css("display","none");
@@ -79,20 +79,20 @@ function enterGame(e){
     setCookie("game",e.innerText,7)
     console.log(e.innerText)
     window.location.href="game.html"
-}
+}//enter game
 function userInfo(){
     clearCookie();
     setCookie("user",userCookie,7)
     setCookie("page","search",7)
 
     window.location.href="user.html"
-}
+}//enter userInfo
 function About(){
     clearCookie();
     setCookie("user",userCookie,7)
     setCookie("from","search",1)
     window.location.href="about.html"
-}
+}//enter About
 function log_out(){
     clearCookie();
     window.location.href="login.html"

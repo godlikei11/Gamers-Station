@@ -8,14 +8,6 @@ function Back(){
     window.location.href="search.html"
 
 }
-function deleteChild() {
-    var e = document.querySelector("ul");
-    var first = e.firstElementChild;
-    while (first) {
-    first.remove();
-    first = e.firstElementChild;
-    }
-}
 
 function Load(){
     $.ajax({
@@ -56,10 +48,9 @@ function Load(){
                     "<br><div class='liUser' ondblclick='userInfo(this)'>"+comGame[i].Name+"</div><button class='btnDel' onclick='delComment(this)' id='"+comGame[i]._id+"'>Delete</button></li>")
                     }
                     $(".content").append($li)
-                }
+                }//input game's information
                 var $btn=$("<div id='"+decodeURIComponent(dataGame.Wiki)+"' class='web wiki' onclick='webOpen(this)'></div><div id='"+decodeURIComponent(dataGame.Twitter)+"' class='web twi' onclick='webOpen(this)'></div><div id='"+decodeURIComponent(dataGame.Offical)+"' class='web off' onclick='webOpen(this)'></div>")
-                $(".gameInfor").append($btn)
-
+                $(".gameInfor").append($btn)//input link
             }
             
     })
@@ -68,7 +59,7 @@ function Load(){
 }
 function webOpen(e){
     window.open(e.id)
-}
+}//open link
 function delComment(e){
     $.ajax({
         url: "../Node.js",
@@ -80,10 +71,10 @@ function delComment(e){
                 }
             }
     })
-}
+}//delcomment
 function wikiclick(e){
     window.open("https://en.wikipedia.org/wiki/"+e.innerText)
-}
+}//open wiki
 function sendComment(){
     let Note = document.getElementById("note");
     let comment = document.getElementById("commentInput").value;
@@ -93,13 +84,13 @@ function sendComment(){
         document.getElementById("note").style.backgroundColor="rgba(165, 42, 42, 0.616)";
         Note.innerHTML="<center><font color='white' size=20px>Comment can not more than 30 digits</font></center>";
         return
-    }
+    }//if comment too long
     if(comment.length==0){
         Note.style.opacity=3;
         document.getElementById("note").style.backgroundColor="rgba(165, 42, 42, 0.616)";
         Note.innerHTML="<center><font color='white' size=20px>Comment can not be empty</font></center>";
         return
-    }
+    }//if comment empty
     $.ajax({
         url: "../Node.js",
         type: "get",
@@ -114,7 +105,7 @@ function sendComment(){
                     location.reload();
                 }
             }
-        })
+        })//show comment
 }
 
 
@@ -148,4 +139,4 @@ function userInfo(e){
     setCookie("game",gameCookie,7);
     setCookie("me",userCookie,7)
     window.location.href="user.html"
-}
+}//setcookie

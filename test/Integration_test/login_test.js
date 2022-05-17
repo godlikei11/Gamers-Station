@@ -3,6 +3,7 @@ let pass1 = localStorage.getItem("password");
 let email1 = localStorage.getItem("email");
 let Name1 = document.getElementById("Name");
 let Pass1 = document.getElementById("Password");
+localStorage.clear();
 if(localStorage.length===3){
     $("#Name").val(name1);
     $("#Password").val(pass1);
@@ -29,7 +30,8 @@ else if(localStorage.length===0){
     }, 2000);
 }
 else if(localStorage.length===2){
-    setInterval(() => {
+    localStorage.clear();
+
         alert("Integration test success")
-    }, 1000);
+
 }

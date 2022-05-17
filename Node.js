@@ -6,28 +6,7 @@ let MongoClient = require('mongodb').MongoClient;
 var ObjectId = require('mongodb').ObjectID;
 
 const { ObjectID } = require('bson');
-/*
-let WebSocket = require("ws");
-let wss = new WebSocket.Server({ port: 3000, clientTracking: true });
-wss.on('connection', function connection(ws) {
-    ws.on('message', function incoming(message) {
-      wss.clients.forEach(function(client){
-         //Sendback the data
-         let MongoUrl = "mongodb://localhost:27017/";//start Mongodb
-         let dataGame = message.toString().split('"')[1];
-            MongoClient.connect(MongoUrl, function(err, db) {
-            if (err) throw err;
-            let dboComment = db.db("MongoDatabase3");
-            let SearchName = {"Name":"ywan1"}
-            dboComment.collection("site").find({"Game":dataGame}).toArray(function(err, result) {
-               client.send(JSON.stringify(result));
-               //db.close();
-            })
-         })
-      })
-    })
-})
-*/
+
 Httpserver.on("request",function(req,res){
     let url = req.url;
     function sendMessage(message){
@@ -267,3 +246,27 @@ Httpserver.on("request",function(req,res){
 Httpserver.listen(8080,function(){
     console.log("server running");
 })
+
+
+/*
+let WebSocket = require("ws");
+let wss = new WebSocket.Server({ port: 3000, clientTracking: true });
+wss.on('connection', function connection(ws) {
+    ws.on('message', function incoming(message) {
+      wss.clients.forEach(function(client){
+         //Sendback the data
+         let MongoUrl = "mongodb://localhost:27017/";//start Mongodb
+         let dataGame = message.toString().split('"')[1];
+            MongoClient.connect(MongoUrl, function(err, db) {
+            if (err) throw err;
+            let dboComment = db.db("MongoDatabase3");
+            let SearchName = {"Name":"ywan1"}
+            dboComment.collection("site").find({"Game":dataGame}).toArray(function(err, result) {
+               client.send(JSON.stringify(result));
+               //db.close();
+            })
+         })
+      })
+    })
+})
+*/
